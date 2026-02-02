@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Blackhole Juggler - Cosmic Arcade Design System */
+
+@layer base {
+  :root {
+    /* Core space theme */
+    --background: 240 20% 3%;
+    --foreground: 200 100% 95%;
+
+    /* Black hole modes */
+    --attract: 195 100% 50%;
+    --attract-glow: 195 100% 70%;
+    --repel: 320 100% 60%;
+    --repel-glow: 320 100% 75%;
+
+    /* Orb colors */
+    --orb-primary: 180 100% 70%;
+    --orb-secondary: 60 100% 70%;
+    --orb-trail: 180 100% 50%;
+
+    /* Crack/damage */
+    --crack: 0 0% 100%;
+    --crack-glow: 195 100% 80%;
+
+    /* UI elements */
+    --card: 240 15% 8%;
+    --card-foreground: 200 100% 95%;
+
+    --popover: 240 15% 8%;
+    --popover-foreground: 200 100% 95%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 240 20% 3%;
+
+    --secondary: 320 100% 60%;
+    --secondary-foreground: 240 20% 3%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 200 30% 60%;
+
+    --accent: 180 100% 70%;
+    --accent-foreground: 240 20% 3%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 15% 20%;
+    --input: 240 15% 15%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Game-specific */
+    --hud-bg: 240 20% 5% / 0.8;
+    --overlay-bg: 240 20% 3% / 0.9;
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 240 15% 8%;
+    --sidebar-foreground: 200 100% 95%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 240 20% 3%;
+    --sidebar-accent: 240 10% 15%;
+    --sidebar-accent-foreground: 200 100% 95%;
+    --sidebar-border: 240 15% 20%;
+    --sidebar-ring: 195 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Orbitron', 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Game-specific utilities */
+@layer utilities {
+  .glow-attract {
+    box-shadow: 
+      0 0 20px hsl(var(--attract) / 0.5),
+      0 0 40px hsl(var(--attract) / 0.3),
+      0 0 60px hsl(var(--attract) / 0.1);
+  }
+
+  .glow-repel {
+    box-shadow: 
+      0 0 20px hsl(var(--repel) / 0.5),
+      0 0 40px hsl(var(--repel) / 0.3),
+      0 0 60px hsl(var(--repel) / 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  .cosmic-gradient {
+    background: radial-gradient(
+      ellipse at center,
+      hsl(240 30% 8%) 0%,
+      hsl(240 20% 3%) 100%
+    );
+  }
+
+  .neon-text-attract {
+    color: hsl(var(--attract));
+    text-shadow: 
+      0 0 5px hsl(var(--attract)),
+      0 0 10px hsl(var(--attract)),
+      0 0 20px hsl(var(--attract) / 0.5);
+  }
+
+  .neon-text-repel {
+    color: hsl(var(--repel));
+    text-shadow: 
+      0 0 5px hsl(var(--repel)),
+      0 0 10px hsl(var(--repel)),
+      0 0 20px hsl(var(--repel) / 0.5);
+  }
+
+  .screen-shake {
+    animation: shake 0.3s ease-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5px, -3px); }
+    20% { transform: translate(5px, 3px); }
+    30% { transform: translate(-4px, 2px); }
+    40% { transform: translate(4px, -2px); }
+    50% { transform: translate(-3px, 3px); }
+    60% { transform: translate(3px, -3px); }
+    70% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    90% { transform: translate(-1px, 1px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
