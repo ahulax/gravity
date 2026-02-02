@@ -12,9 +12,8 @@ let lastHandTime = 0;
 
 export async function initHandTracking() {
     const model = handPoseDetection.SupportedModels.MediaPipeHands;
-    const detectorConfig: handPoseDetection.MediaPipeHandsMediaPipeModelConfig = {
-        runtime: 'mediapipe', // or 'tfjs'
-        solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/hands',
+    const detectorConfig: handPoseDetection.MediaPipeHandsTfjsModelConfig = {
+        runtime: 'tfjs', // Switching to 'tfjs' for production stability
         modelType: 'full',
     };
     detector = await handPoseDetection.createDetector(model, detectorConfig);

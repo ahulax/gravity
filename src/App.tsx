@@ -41,9 +41,20 @@ const App = () => {
       {/* Loading Overlay */}
       {!gameState && (
         <div className="absolute inset-0 bg-slate-950 text-white flex items-center justify-center z-50">
-          <div className="text-center animate-pulse">
-            <h1 className="text-4xl mb-4">Initializing Neural Link...</h1>
+          <div className="text-center">
+            <h1 className="text-4xl mb-4 animate-pulse">Initializing Neural Link...</h1>
             <p className="text-slate-400">Please allow camera access</p>
+            {debugInfo.includes('Error') && (
+              <div className="mt-8 p-4 bg-red-900/30 border border-red-500/50 rounded-lg max-w-md mx-auto">
+                <p className="text-red-400 font-mono text-sm">{debugInfo}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-500 rounded text-white text-sm"
+                >
+                  RETRY
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
